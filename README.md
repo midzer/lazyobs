@@ -3,16 +3,27 @@ Lazy load any images, videos and components needing individual (heavy) JavaScipt
 
 ## Demo
 lazyobs is used at https://feuerwehr-eisolzried.de/
-Video example is at https://feuerwehr-eisolzried.de/media/
+
+Video example https://feuerwehr-eisolzried.de/media/
 
 ## How to use
 Simply include `<script src="/js/lazyobs.min.js" async></script>` right before `</body>`.
 
-Add `lazy` class to any image, video or component which needs JS to operate.
-
-Don't forget to put and `id=COMPONENT` for your lazy components which will point to your `/assets/js/COMPONENT.js`. For example Demo calendar HTML snippet is `<div id="calendar" class="lazy"></div>` which lazy loads JS file `calendar.js` via Promise.
+* Add `lazy` class and `data-src` to any image, video or component which needs JS.
 
 Lazy loading kicks in right before for new content entering viewport after scroll or any other visible UI change.
+
+## Example
+* Image: `<img class="lazy" data-src="/assets/images/funkycat.jpg">`
+* Video:
+```
+<video class="lazy" controls preload="metadata">
+  <source data-src="/assets/videos/funkycat.webm" type="video/webm">
+  <source data-src="/assets/videos/funkycat.mp4" type="video/mp4">  
+  Your browser does not support this tag.
+</video>
+```
+* Component: `<div class="lazy" data-src="/assets/js/calendar.js"></div>`
 
 ## Animation
 Maybe you want to animate your images after being loaded?

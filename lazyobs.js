@@ -16,14 +16,15 @@ function addLoaded(element) {
     element.classList.add('loaded');
 }
 
-function loadScript(src) {
+function loadScript(element) {
     return new Promise(function(resolve, reject) {
         const script = document.createElement('script');
         script.async = true;
-        script.src = '/assets/js/' + src.id + '.js';
+        script.src = element.dataset.src;
+        element.removeAttribute('data-src');
         script.onload = function() {
             resolve(script.src);
-            addLoaded(src);
+            addLoaded(element);
         };
         script.onerror = reject;
         if (document.head.lastChild != script) {
@@ -47,13 +48,13 @@ function load(element) {
         element.onload = function() { addLoaded(element) };
         replaceSrc(element);
     }
-    else if (element.hasAttribute('id')) {
-        // any element with an id
+    else {
+        // any element with data-src
         loadScript(element);
     }
 }
 
-// Pre-load items that are within 150px of the visible viewport height.
+// Pre-load items that are within 2 multiples of the visible viewport height.
 var observer = new IntersectionObserver(function(changes) {
     changes.forEach(function(change) {
         // Edge 15 doesn't support isIntersecting, but we can infer it

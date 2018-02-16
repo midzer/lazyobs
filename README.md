@@ -1,5 +1,5 @@
 # lazyobs
-Lazy load any images, videos and components needing individual (heavy) JavaScipt with Intersection Observer API.
+Lazy load any images, videos, iframes and components needing individual (heavy) JavaScipt with Intersection Observer API.
 
 ## Demo
 lazyobs is used at https://feuerwehr-eisolzried.de/

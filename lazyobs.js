@@ -43,7 +43,7 @@ function load(element) {
         }
         element.load();
     }
-    else if (element.nodeName == 'IMG') {
+    else if (element.nodeName == 'IMG' || element.nodeName == 'IFRAME') {
         // <img> element
         element.onload = function() { addLoaded(element) };
         replaceSrc(element);
